@@ -10,7 +10,7 @@ const Contact = () => {
         Contact Us
       </h1>
       <p>
-      This is the official page of Shopnix, where you can share all your queries, feedback, complaints, or any concern you may have about our products.
+      This is the official page of My Website, where you can share all your queries, feedback, complaints, or any concern you may have about our products.
       </p>
       <p>
       In Case of any grievance, don't hesitate to get in touch with us on our official contact number xxxxxxxxxx. Or you can write to us at xyz@gmail.com.

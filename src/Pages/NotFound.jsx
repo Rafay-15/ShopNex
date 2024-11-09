@@ -7,7 +7,7 @@ function NotFound() {
     <div className="container">
       <div className="text-center">
         <svg
-          className="emoji-404"
+          className="emoji-404 error"
           enableBackground="new 0 0 226 249.135"
           height="249.135"
           viewBox="0 0 226 249.135"
