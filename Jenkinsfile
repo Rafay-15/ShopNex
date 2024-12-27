@@ -3,6 +3,8 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "rafay15/assignment3:latest"
+        IMAGE_NAME = "myapp"
+        DOCKER_REGISTRY = "docker.io" 
     }
 
     stages {
@@ -20,7 +22,7 @@ pipeline {
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Push Docker Image') {
             steps {
                 script {
                     withDockerRegistry([ credentialsId: 'dockerhub-credentials-id', url: '' ]) {
@@ -28,6 +30,48 @@ pipeline {
                     }
                 }
             }
+        }
+
+        stage('Run Tests in Docker') {
+            steps {
+                script {
+                  
+                    sh '''
+                    docker run -d --name myapp-container -p 3000:3000 $DOCKER_IMAGE
+
+                    sleep 10
+
+                    docker exec myapp-container python /app/src/test_script.py
+
+                    TEST_RESULT=$?
+
+                    docker stop myapp-container
+                    docker rm myapp-container
+
+                    exit $TEST_RESULT
+                    '''
+                }
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                script {
+                    sh 'docker system prune -f'
+                }
+            }
+        }
+    }
+    #test
+    post {
+        always {
+            sh 'docker system prune -f'
+        }
+        success {
+            echo 'Tests passed and pipeline completed successfully!'
+        }
+        failure {
+            echo 'Tests failed. Please check the logs for details.'
         }
     }
 }
