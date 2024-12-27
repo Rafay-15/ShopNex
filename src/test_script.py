@@ -42,19 +42,16 @@ class MERNTests(unittest.TestCase):
         driver.execute_script("arguments[0].scrollIntoView(true);", add_to_cart_button)
         time.sleep(1)  
         add_to_cart_button.click()
-        time.sleep(2)  # Allow for asynchronous updates in the DOM
+        time.sleep(2)  
 
-        # Wait for the cart count to update
         WebDriverWait(self.driver, 10).until(
             EC.text_to_be_present_in_element((By.CLASS_NAME, "nav-cart-count"), "1")
         )
 
-        # Get the updated cart count text
         cart_count_element = driver.find_element(By.CLASS_NAME, "nav-cart-count")
         cart_count = cart_count_element.text
         print("This is the cart count:", cart_count)
 
-        # Assert the cart count is updated to 1
         self.assertEqual(cart_count, "1", "Cart count should be updated to 1")
 
 
