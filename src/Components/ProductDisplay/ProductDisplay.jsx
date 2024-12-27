@@ -113,7 +113,7 @@ const ProductDisplay = (props) => {
             onChange={(e) => handleQuantityChange(e.target.value)}
           />
         </div>
-        <button
+        <button id="addtocartbtn"
           onClick={() => {
             addToCart(product.id, selectedSize, selectedQuantity)
             toast.success("Item added to cart",{

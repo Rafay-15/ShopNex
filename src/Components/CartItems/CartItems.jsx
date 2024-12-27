@@ -18,7 +18,7 @@ const CartItems = () => {
 
   return (
     <div className="cartitems">
-      <div className={`cartitems-format-main ci_${theme}`}>
+      <div  className={`cartitems-format-main ci_${theme} CartItemLists`}>
         <p>Products</p>
         <p>Title</p>
         <p>Price</p>
@@ -28,14 +28,14 @@ const CartItems = () => {
         <p>Remove</p>
       </div>
       {isEmptyCart && (
-        <div className="empty-cart">
+        <div id="empty-cart-container" className="empty-cart">
           <img
             src={placeholder_image}
             alt="Empty Cart"
             style={{ width: "150px", marginLeft: "490px" }}
           />
           <div style={{ textAlign: "center" }}>
-            <p style={{ fontSize: "24px", color: "#333" }}>
+            <p id="empty-cart-text" style={{ fontSize: "24px", color: "#333" }}>
               Hey, it feels so light!
             </p>
             <p style={{ fontSize: "18px", color: "#999" }}>

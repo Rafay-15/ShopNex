@@ -18,9 +18,11 @@ import { useContext, useEffect } from "react";
 import { ShopContext } from "./Context/ShopContext";
 import Collections from "./Pages/Collections";
 import Offers from "./Pages/Offers";
+import { HelmetProvider } from 'react-helmet-async';
 function App() {
   const { theme } = useContext(ShopContext);
   return (
+    <HelmetProvider>
     <div className={`${theme}_app`}>
       <BrowserRouter>
         <Navbar />
@@ -53,6 +55,7 @@ function App() {
       </BrowserRouter>
       <ScrollToTop smooth component={<p style={{ color: "blue" }}>↑</p>} />
     </div>
+    </HelmetProvider>
   );
 }
 

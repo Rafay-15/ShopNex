@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import './CSS/About.css'
 import { useState,useEffect } from 'react';
 import { ShopContext } from '../Context/ShopContext';
-
+import { Helmet } from 'react-helmet-async';
 const About = () => {
   const {theme}=useContext(ShopContext);
   return (
     <div className={'about_page_'+theme}>
+      <Helmet>
+        <title>About</title>
+      </Helmet>
       <h1 className="text-center mt-4" id = "aboutheading"><strong>About Us</strong></h1>
     <div className="container-my d-flex align-items-center justify-content-center border shadow-lg rounded py-4">
       <div className="content">

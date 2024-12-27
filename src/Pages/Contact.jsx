@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import './CSS/Contact.css'
 import { ShopContext } from '../Context/ShopContext';
-
+import { Helmet } from 'react-helmet-async';
 const Contact = () => {
   const {theme}=useContext(ShopContext);
   return (
     <div className={"container-my_"+theme}>
+      <Helmet>
+        <title>Contact</title>
+      </Helmet>
       <h1 id="myheading">
         Contact Us
       </h1>

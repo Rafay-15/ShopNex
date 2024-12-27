@@ -1,11 +1,14 @@
 import React from 'react'
 import * as Components from './Components';
-
+import { Helmet } from 'react-helmet-async';
 
 const LoginSignup = () => {
   const [signIn, toggle] = React.useState(true);
   return(
     <Components.div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
         <Components.Container>
           <Components.SignUpContainer signinIn={signIn}>
               <Components.Form>
